@@ -3,7 +3,7 @@ pipeline{
   stages{
     stage("Lint HTML"){
       steps{
-        sh 'tidy -q -e *.html'
+        sh 'tidy -q -e docker/*.html'
       }
     }
     stage("Build docker image"){
@@ -12,13 +12,19 @@ pipeline{
         }
     }
     stage("Push image"){
-	steps {
-	  sh 'echo "Push image to registry"'
+      steps {
+	sh 'echo "Push image to registry"'
 	}
     }
-    stage("Set current kubectl context"){                                                                                                                                           steps {                                                                                                                                                                       sh 'echo "Set current kubectl context"'                                                                                                                                   }
+    stage("Set current kubectl context"){
+      steps {
+	sh 'echo "Set current kubectl context"' 
+        }
     }
-    stage("Deploy container"){                                                                                                                                                        steps {                                                                                                                                                                       sh 'echo "Deploy Conatiner"'                                                                                                                                            }
+    stage("Deploy container"){
+      steps {
+	sh 'echo "Deploy Conatiner"'
+        }
     }
- }
+  }
 }
